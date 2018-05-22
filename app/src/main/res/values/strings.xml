@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">TP2Room</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_maps">Carte</string>
+
+    <string name="hint_name">Nom</string>
+    <string name="hint_description">Description</string>
+    <string name="hint_phone">Téléphone</string>
+    <string name="hint_latitude">Latitude</string>
+    <string name="hint_longitude">Longitude</string>
+    <string name="hint_insert">Inserer</string>
+
+    <string name="field_error"> Erreur </string>
+</resources>
