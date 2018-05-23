@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">TP2Room</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_add">Ajouter</string>
+    <string name="title_list">List</string>
     <string name="title_maps">Carte</string>
 
     <string name="hint_name">Nom</string>
@@ -12,4 +12,7 @@
     <string name="hint_insert">Inserer</string>
 
     <string name="field_error"> Erreur </string>
+
+    <string name="toast_add_place_success"> Place ajoutée! </string>
+    <string name="toast_delete_place_success"> Place supprimée! </string>
 </resources>

@@ -29,7 +29,6 @@ public class AddPlaceFragment extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        //return inflater.inflate(R.layout.fragment_add_place, container, false);
         View rootView = inflater.inflate(R.layout.fragment_add_place, container, false);
 
         name = rootView.findViewById(R.id.add_place_name);
@@ -101,7 +100,7 @@ public class AddPlaceFragment extends Fragment implements View.OnClickListener {
 
         AppDatabase.get(getContext()).placeDao().insert(placeToInsert);
 
-        CharSequence text = "Place ajoutée !";
+        CharSequence text = getString(R.string.toast_add_place_success);
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(getContext(), text, duration);

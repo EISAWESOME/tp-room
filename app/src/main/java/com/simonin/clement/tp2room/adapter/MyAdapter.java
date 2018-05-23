@@ -45,7 +45,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public void onClick(View v) {
             Context context = v.getContext();
             AppDatabase.get(context).placeDao().delete(place);
-            CharSequence text = "Place supprimée !";
+            CharSequence text = context.getString(R.string.toast_delete_place_success);
             int duration = Toast.LENGTH_SHORT;
 
             Toast toast = Toast.makeText(context, text, duration);
