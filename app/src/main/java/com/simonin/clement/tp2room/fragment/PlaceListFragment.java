@@ -1,5 +1,6 @@
 package com.simonin.clement.tp2room.fragment;
 
+import android.arch.lifecycle.Observer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,11 +19,13 @@ import com.simonin.clement.tp2room.database.entity.Place;
 import java.util.List;
 
 
-public class PlaceListFragment extends Fragment {
+public class PlaceListFragment extends Fragment implements Observer<List<Place>>{
 
     private RecyclerView mRecyclerView;
     private MyAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+
+    // TODO: Au clic d'un item, on ouvre la map, et on zoom sur le point en question, avec son nom afficher
 
     @Nullable
     @Override
@@ -38,14 +41,20 @@ public class PlaceListFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new MyAdapter(getContext(), fetchDbDatas());
+        mAdapter = new MyAdapter(getContext());
         mRecyclerView.setAdapter(mAdapter);
 
+        fetchDbDatas();
 
         return rootView;
     }
 
-    public List<Place> fetchDbDatas() {
-        return AppDatabase.get(getContext()).placeDao().getAll();
+    public void fetchDbDatas() {
+         AppDatabase.get(getContext()).placeDao().subscribeAll().observe(this, this);
+    }
+
+    @Override
+    public void onChanged(@Nullable List<Place> places) {
+        mAdapter.updateData(places);
     }
 }

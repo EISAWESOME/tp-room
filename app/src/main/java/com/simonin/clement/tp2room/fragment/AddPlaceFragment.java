@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.simonin.clement.tp2room.R;
 import com.simonin.clement.tp2room.database.AppDatabase;
@@ -92,12 +94,19 @@ public class AddPlaceFragment extends Fragment implements View.OnClickListener {
             placeToInsert.setPhone(String.valueOf(phone.getText()));
             placeToInsert.setLatitude(Float.parseFloat(String.valueOf(latitude.getText())));
             placeToInsert.setLongitude(Float.parseFloat(String.valueOf(longitude.getText())));
+
         } catch (Exception e) {
 
         }
 
         AppDatabase.get(getContext()).placeDao().insert(placeToInsert);
 
+        CharSequence text = "Place ajoutée !";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(getContext(), text, duration);
+        toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 10);
+        toast.show();
     }
 
 }
